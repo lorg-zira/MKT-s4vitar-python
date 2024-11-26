@@ -2,10 +2,17 @@
 
 import os
 
-# Crear las carpetas directamente
-os.makedirs('nmap', exist_ok=True)
-os.makedirs('content', exist_ok=True)
-os.makedirs('exploits', exist_ok=True)
-os.makedirs('scripts', exist_ok=True)
+# Lista de carpetas que deseas crear
+carpetas = ['nmap', 'content', 'exploits', 'scripts']
 
-print("Carpetas creadas exitosamente.")
+# Crear cada carpeta
+for carpeta in carpetas:
+    try:
+        # Comprobar si la carpeta ya existe, si no, crearla
+        if not os.path.exists(carpeta):
+            os.mkdir(carpeta)
+            print(f'Carpeta {carpeta} creada exitosamente.')
+        else:
+            print(f'La carpeta {carpeta} ya existe.')
+    except Exception as e:
+        print(f'Error al crear la carpeta {carpeta}: {e}')
